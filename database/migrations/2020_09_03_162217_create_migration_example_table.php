@@ -38,36 +38,45 @@ class CreateMigrationExampleTable extends Migration
                 // 設置 integer 欄位為 UNSIGNED
                 ->unsigned();
             // 長度 4 的 char
-            $table->char('char_len4', 4);
+            $table->char('char_len4', 4)
+                ->nullable();
             // 日期
-            $table->date('date_type');
+            $table->date('date_type')
+                ->nullable();
             // 日期含時間
-            $table->dateTime('date_time');
+            $table->dateTime('date_time')
+                ->nullable();
             // 長度 5 並包含小數點 2 位的十進制
-            $table->decimal('amount', 5, 2);
+            $table->decimal('amount', 5, 2)
+                ->nullable();
             // 長度 5 並包含小數點 8 位的浮點數
-            $table->double('double_number', 15, 8);
+            $table->double('double_number', 15, 8)
+                ->nullable();
             // Enum 型別
-            $table->enum('choices', ['foo', 'bar']);
+            $table->enum('choices', ['foo', 'bar'])
+                ->nullable();
             // 浮點數
-            $table->float('float_number');
+            $table->float('float_number')
+                ->nullable();
             // long text
-            $table->longText('long_text');
+            $table->longText('long_text')
+                ->nullable();
             // small integer
-            $table->smallInteger('small_integer');
+            $table->smallInteger('small_integer')
+                ->nullable();
             // 加入 deleted_at 欄位於軟刪除使用
-            $table->softDeletes();	
+            $table->softDeletes();
             // varchar 長度100
-            $table->string('string_len100', 100);
+            $table->string('string_len100', 100)
+                ->nullable();
             // text
-            $table->text('description');
+            $table->text('description')
+                ->nullable();
             // time
-            $table->time('time_type');
+            $table->time('time_type')
+                ->nullable();
             // 加入 created_at 和 updated_at 欄位
             $table->timestamps();
-
-            // $table->foreign('integer_number')->references('foreign_integer')->on('another_table');
-            // $table->foreign('integer_number')->references('integer_number')->on('another_table');
         });
 
         DB::statement("ALTER TABLE `$this->tableName` comment '這是 Table 註解'");
