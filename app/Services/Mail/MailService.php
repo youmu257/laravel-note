@@ -2,6 +2,7 @@
 namespace App\Services\Mail;
 
 use App\Mail\SampleMail;
+use App\Mail\SamplePdfMail;
 use App\Services\Service;
 use Mail;
 
@@ -21,6 +22,30 @@ class MailService extends Service
             $receiverMail = 'youmu257@gmail.com';
 
             $sampleMail = new SampleMail($smapleData);
+            Mail::to($receiverMail)
+                ->send($sampleMail);
+
+            return $this->getSuccessResult();
+        } catch (Exception $e) {
+            Log::error(__METHOD__.': '.$e->getMessage());
+            return $this->getFailResult($e->getMessage());
+        }
+    }
+
+    /**
+     * Send mail sample with pdf.
+     * 
+     * @return array
+     */
+    public function sendSamplePdfMail(): array
+    {
+        try {
+            $smapleData = [
+                'text1' => 'This is a sample text.',
+            ];
+            $receiverMail = 'youmu257@gmail.com';
+
+            $sampleMail = new SamplePdfMail($smapleData);
             Mail::to($receiverMail)
                 ->send($sampleMail);
 

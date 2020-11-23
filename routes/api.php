@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('sendSampleMail', 'MailController@sendSampleMail');
+Route::get('sendSamplePdfMail', 'MailController@sendSamplePdfMail');

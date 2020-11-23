@@ -31,4 +31,19 @@ class MailController extends Controller
             return $this->exceptionResponse($e);
         }
     }
+
+    /**
+     * Send mail sample with pdf.
+     */
+    public function sendSamplePdfMail()
+    {
+        try {
+            $result = $this->mailService->sendSamplePdfMail();
+
+            return $this->format($result);
+        } catch (Exception $e) {
+            Log::error(__METHOD__.': '.$e->getMessage());
+            return $this->exceptionResponse($e);
+        }
+    }
 }
